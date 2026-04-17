@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37012.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{F5B7F998-ADA2-43E7-AB9D-8D21565FE79C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{C19C426F-7B00-45F4-9A6D-9FB6ECAC1D1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardManager.API", "src\Backend\CardManager.API\CardManager.API.csproj", "{BE386DD9-CFA9-4530-BB0B-84BBA4A422D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE386DD9-CFA9-4530-BB0B-84BBA4A422D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE386DD9-CFA9-4530-BB0B-84BBA4A422D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE386DD9-CFA9-4530-BB0B-84BBA4A422D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE386DD9-CFA9-4530-BB0B-84BBA4A422D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5B7F998-ADA2-43E7-AB9D-8D21565FE79C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{C19C426F-7B00-45F4-9A6D-9FB6ECAC1D1E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{BE386DD9-CFA9-4530-BB0B-84BBA4A422D4} = {F5B7F998-ADA2-43E7-AB9D-8D21565FE79C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {419710B5-71FF-4EE9-872C-2C5EB82211B0}
+	EndGlobalSection
+EndGlobal
