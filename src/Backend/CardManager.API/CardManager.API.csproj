@@ -14,6 +14,7 @@
     <ProjectReference Include="..\..\Shared\CardManager.Communication\CardManager.Communication.csproj" />
     <ProjectReference Include="..\..\Shared\CardManager.Exceptions\CardManager.Exceptions.csproj" />
     <ProjectReference Include="..\CardManager.Application\CardManager.Application.csproj" />
+    <ProjectReference Include="..\CardManager.Infrastructure\CardManager.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
