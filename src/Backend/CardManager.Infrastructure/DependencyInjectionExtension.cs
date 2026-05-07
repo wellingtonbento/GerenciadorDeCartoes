@@ -3,9 +3,11 @@ using CardManager.Domain.Repositories.User;
 using CardManager.Infrastructure.DataAccess;
 using CardManager.Infrastructure.DataAccess.Repositories;
 using CardManager.Infrastructure.Extensions;
+using FluentMigrator.Runner;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace CardManager.Infrastructure
 {
@@ -14,6 +16,7 @@ namespace CardManager.Infrastructure
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             AddDbContext(services, configuration);
+            AddFluentMigrator(services, configuration);
             AddRepositories(services);
         }
 
@@ -34,6 +37,17 @@ namespace CardManager.Infrastructure
             services.AddScoped<IUserReadRepository, UserRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+        }
+
+        private static void AddFluentMigrator(IServiceCollection services, IConfiguration configuration)
+        {
+            var connectionString = configuration.ConnectionString();
+            services.AddFluentMigratorCore().ConfigureRunner(options =>
+            {
+                options.AddMySql5()
+                .WithGlobalConnectionString(connectionString)
+                .ScanIn(Assembly.Load("CardManager.Infrastructure")).For.All();
+            });
         }
     }
 }

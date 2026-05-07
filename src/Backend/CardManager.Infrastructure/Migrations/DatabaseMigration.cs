@@ -1,13 +1,16 @@
 ﻿using Dapper;
+using FluentMigrator.Runner;
+using Microsoft.Extensions.DependencyInjection;
 using MySqlConnector;
 
 namespace CardManager.Infrastructure.Migrations
 {
     public static class DatabaseMigration
     {
-        public static void Migrate(string connectionString)
+        public static void Migrate(string connectionString, IServiceProvider serviceProvider)
         {
             EnsureCreateDb(connectionString);
+            MigrationDatabase(serviceProvider);
         }
 
         public static void EnsureCreateDb(string connectionString)
@@ -29,6 +32,15 @@ namespace CardManager.Infrastructure.Migrations
             {
                 DbConnection.Execute($"CREATE DATABASE {databaseName}");
             }
+        }
+
+        private static void MigrationDatabase(IServiceProvider serviceProvider)
+        {
+            var runner = serviceProvider.GetRequiredService<IMigrationRunner>();
+
+            runner.ListMigrations();
+
+            runner.MigrateUp();
         }
     }
 }
