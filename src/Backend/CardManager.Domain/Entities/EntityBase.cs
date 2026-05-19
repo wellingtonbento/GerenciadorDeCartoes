@@ -2,16 +2,9 @@
 {
     public class EntityBase
     {
-        public long Id { get; protected set; }
-        public bool Active { get; protected set; }
-        public DateTime CreatedOn { get; protected set; }
+        public long Id { get; set; }
+        public bool Active { get; set; } = true;
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
 
-        protected EntityBase()
-        {
-            Active = true;
-            CreatedOn = DateTime.UtcNow;
-        }
-        public void Activated() => Active = true;
-        public void Deactivated() => Active = false;
     }
 }
