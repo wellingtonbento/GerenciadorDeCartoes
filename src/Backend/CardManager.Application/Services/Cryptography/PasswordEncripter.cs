@@ -1,0 +1,26 @@
+﻿using System.Security.Cryptography;
+using System.Text;
+
+namespace CardManager.Application.Services.Cryptography
+{
+    public class PasswordEncripter
+    {
+        public string EncryptPassword(string password)
+        {
+            var bytes = Encoding.UTF8.GetBytes(password);
+            var hashBytes = SHA512.HashData(bytes);
+
+            return StringBytes(hashBytes);
+        }
+
+        private static string StringBytes(byte[] bytes)
+        {
+            var stringBuilder = new StringBuilder();
+            foreach (var b in bytes)
+            {
+                stringBuilder.Append(b.ToString("x2"));
+            }
+            return stringBuilder.ToString();
+        }
+    }
+}
