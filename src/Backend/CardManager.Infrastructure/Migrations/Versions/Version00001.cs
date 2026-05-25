@@ -10,7 +10,7 @@ namespace CardManager.Infrastructure.Migrations.Versions
             CreateTable("Users")
                 .WithColumn("Name").AsString(255).NotNullable()
                 .WithColumn("Email").AsString(255).NotNullable()
-                .WithColumn("PasswordHash").AsString(2000).NotNullable();
+                .WithColumn("Password").AsString(2000).NotNullable();
 
         }
     }
