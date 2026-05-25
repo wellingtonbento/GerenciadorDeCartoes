@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\Shared\CardManager.Communication\CardManager.Communication.csproj" />
     <ProjectReference Include="..\..\Shared\CardManager.Exceptions\CardManager.Exceptions.csproj" />
     <ProjectReference Include="..\CardManager.Domain\CardManager.Domain.csproj" />
