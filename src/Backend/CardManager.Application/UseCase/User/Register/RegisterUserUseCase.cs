@@ -32,7 +32,6 @@ namespace CardManager.Application.UseCase.User.Register
             await Validate(request);
 
             var user = _mapper.Map<Domain.Entities.User>(request);
-
             user.Password = _passwordEncripter.EncryptPassword(request.Password);
 
             await _writeRepository.Add(user);
@@ -41,7 +40,7 @@ namespace CardManager.Application.UseCase.User.Register
 
             return new ResponseUserRegisterJson
             {
-                Name = request.Name
+                Name = user.Name
             };
         }
 

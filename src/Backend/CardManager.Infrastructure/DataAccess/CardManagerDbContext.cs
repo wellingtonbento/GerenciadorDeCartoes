@@ -5,7 +5,7 @@ namespace CardManager.Infrastructure.DataAccess
 {
     public class CardManagerDbContext : DbContext
     {
-        public CardManagerDbContext(DbContextOptions DbOptions) : base(DbOptions) { }
+        public CardManagerDbContext(DbContextOptions<CardManagerDbContext> DbOptions) : base(DbOptions) { }
 
         public DbSet<User> Users { get; set; }
 
