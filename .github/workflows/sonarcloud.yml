@@ -48,7 +48,7 @@ jobs:
           dotnet test CardManager.sln \
             --collect:"XPlat Code Coverage" \
             --results-directory:"./coverage" \
-            --settings:coverlet.runsettings
+            --settings coverlet.runsettings
 
       - name: End SonarCloud scan
         run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
