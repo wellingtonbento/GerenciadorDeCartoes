@@ -1,6 +1,12 @@
-﻿namespace CardManager.Exceptions.Exceptions
+﻿using System.Net;
+
+namespace CardManager.Exceptions.Exceptions
 {
-    public class CardManagerException : SystemException
+    public abstract class CardManagerException : SystemException
     {
+        public CardManagerException(string message) : base(message) { }
+
+        public abstract IList<string> GetErrorMessages();
+        public abstract HttpStatusCode GetStatusCode();
     }
 }

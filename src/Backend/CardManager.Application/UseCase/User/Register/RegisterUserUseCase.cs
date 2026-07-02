@@ -16,15 +16,14 @@ namespace CardManager.Application.UseCase.User.Register
         private readonly IUserReadRepository _readRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly PasswordEncripter _passwordEncripter;
 
-        public RegisterUserUseCase(IUserWriteRepository writeRepository, IUserReadRepository readRepository, IUnitOfWork unitOfWork, IMapper mapper, PasswordEncripter passwordEncripter)
+
+        public RegisterUserUseCase(IUserWriteRepository writeRepository, IUserReadRepository readRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
             _writeRepository = writeRepository;
             _readRepository = readRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _passwordEncripter = passwordEncripter;
         }
 
         public async Task<ResponseUserRegisterJson> ValidateRequest(RequestUserRegisterJson request)
@@ -32,7 +31,7 @@ namespace CardManager.Application.UseCase.User.Register
             await Validate(request);
 
             var user = _mapper.Map<Domain.Entities.User>(request);
-            user.Password = _passwordEncripter.EncryptPassword(request.Password);
+            user.Password = PasswordEncripter.EncryptPassword(request.Password);
 
             await _writeRepository.Add(user);
 
@@ -54,7 +53,7 @@ namespace CardManager.Application.UseCase.User.Register
             if (emailExist)
                 result.Errors.Add(new ValidationFailure(string.Empty, MessagesException.EMAIL_ALREADY_REGISTERED));
 
-            if (result.IsValid == false)
+            if (!result.IsValid)
             {
                 var errorMessage = result.Errors.Select(erro => erro.ErrorMessage).ToList();
 

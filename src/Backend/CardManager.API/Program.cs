@@ -35,7 +35,7 @@ app.MapControllers();
 
 MigrateDatabase();
 
-app.Run();
+await app.RunAsync();
 
 
 void MigrateDatabase()
@@ -49,4 +49,7 @@ void MigrateDatabase()
     DatabaseMigration.Migrate(databaseConnection, serviceScope.ServiceProvider);
 }
 
-public partial class Program { }
+public partial class Program
+{
+    protected Program() { }
+}

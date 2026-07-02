@@ -28,7 +28,7 @@ namespace CardManager.Infrastructure.Migrations
 
             var records = DbConnection.Query("SELECT * FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = @name", parameters);
 
-            if (records.Any() == false)
+            if (!records.Any())
             {
                 DbConnection.Execute($"CREATE DATABASE {databaseName}");
             }
