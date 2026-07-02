@@ -1,7 +1,6 @@
 ﻿using CardManager.Application.UseCase.User.Register;
 using CardManager.Exceptions;
 using CardManager.Exceptions.Exceptions;
-using CoreTestUtilities.Cryptography;
 using CoreTestUtilities.Mapper;
 using CoreTestUtilities.Repositories;
 using CoreTestUtilities.Requests;
@@ -34,7 +33,7 @@ namespace UseCases.Test.User.Register
             Func<Task> act = async () => await useCase.ValidateRequest(request);
 
             (await act.Should().ThrowAsync<ErrorOnValidationException>())
-                .Where(error => error.ErrorMessages.Count == 1 && error.ErrorMessages.Contains(MessagesException.EMAIL_ALREADY_REGISTERED));
+                .Where(error => error.GetErrorMessages().Count == 1 && error.GetErrorMessages().Contains(MessagesException.EMAIL_ALREADY_REGISTERED));
         }
 
         [Fact]
@@ -48,13 +47,12 @@ namespace UseCases.Test.User.Register
             Func<Task> act = async () => await useCase.ValidateRequest(request);
 
             (await act.Should().ThrowAsync<ErrorOnValidationException>())
-                .Where(error => error.ErrorMessages.Count == 1 && error.ErrorMessages.Contains(MessagesException.NAME_EMPTY));
+                .Where(error => error.GetErrorMessages().Count == 1 && error.GetErrorMessages().Contains(MessagesException.NAME_EMPTY));
         }
 
-        private RegisterUserUseCase CreateUseCase(string? email = null)
+        private static RegisterUserUseCase CreateUseCase(string? email = null)
         {
             var mapper = MapperBuilder.Build();
-            var passwordEncripter = PasswordEncripterBuilder.Build();
             var writeRepository = UserWriteRepositoryBuilder.Build();
             var readRepositoryBuilder = new UserReadRepositoryBuilder();
             var unitOfWork = UnitOfWorkBuilder.Build();
@@ -62,7 +60,7 @@ namespace UseCases.Test.User.Register
             if (string.IsNullOrWhiteSpace(email) == false)
                 readRepositoryBuilder.ExistActiveUserWithEmail(email);
 
-            return new RegisterUserUseCase(writeRepository, readRepositoryBuilder.Build(), unitOfWork, mapper, passwordEncripter);
+            return new RegisterUserUseCase(writeRepository, readRepositoryBuilder.Build(), unitOfWork, mapper);
         }
     }
 }

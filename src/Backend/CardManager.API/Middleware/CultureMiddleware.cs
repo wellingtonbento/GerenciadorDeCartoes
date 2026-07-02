@@ -16,7 +16,7 @@ namespace CardManager.API.Middleware
 
             var cultureInfo = new CultureInfo("pt");
 
-            if(string.IsNullOrWhiteSpace(requestedCulture) == false &&
+            if(!string.IsNullOrWhiteSpace(requestedCulture) &&
                 supportedLanguages.Any(c => c.Name.Equals(requestedCulture)))
             {
                 cultureInfo = new CultureInfo(requestedCulture);

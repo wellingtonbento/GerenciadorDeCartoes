@@ -3,9 +3,9 @@ using System.Text;
 
 namespace CardManager.Application.Services.Cryptography
 {
-    public class PasswordEncripter
+    public static class PasswordEncripter
     {
-        public string EncryptPassword(string password)
+        public static string EncryptPassword(string password)
         {
             var bytes = Encoding.UTF8.GetBytes(password);
             var hashBytes = SHA512.HashData(bytes);

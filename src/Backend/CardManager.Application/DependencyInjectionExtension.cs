@@ -1,5 +1,4 @@
 ﻿using CardManager.Application.Services.AutoMapper;
-using CardManager.Application.Services.Cryptography;
 using CardManager.Application.UseCase.User.Register;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,7 +8,6 @@ namespace CardManager.Application
     {
         public static void AddApplication(this IServiceCollection services)
         {
-            AddPasswordEncripter(services);
             AddAutoMapper(services);
             AddUseCases(services);
         }
@@ -17,11 +15,6 @@ namespace CardManager.Application
         private static void AddUseCases(this IServiceCollection services)
         {
            services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
-        }
-
-        private static void AddPasswordEncripter(this IServiceCollection services)
-        {
-            services.AddScoped(options => new PasswordEncripter());
         }
 
         private static void AddAutoMapper(this IServiceCollection services)
