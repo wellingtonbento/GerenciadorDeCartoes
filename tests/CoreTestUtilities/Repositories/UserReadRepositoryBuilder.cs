@@ -1,4 +1,5 @@
-﻿using CardManager.Domain.Repositories.User;
+﻿using CardManager.Domain.Entities;
+using CardManager.Domain.Repositories.User;
 using Moq;
 
 namespace CoreTestUtilities.Repositories
@@ -12,6 +13,10 @@ namespace CoreTestUtilities.Repositories
         public void ExistActiveUserWithEmail(string email)
         {
             _repository.Setup(repository => repository.ExistActiveUserWithEmail(email)).ReturnsAsync(true);
+        }
+        public void GetEmail(User user)
+        {
+            _repository.Setup(repository => repository.GetEmail(user.Email)).ReturnsAsync(user);
         }
 
         public IUserReadRepository Build() => _repository.Object;

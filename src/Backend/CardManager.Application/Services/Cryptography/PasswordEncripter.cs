@@ -13,6 +13,13 @@ namespace CardManager.Application.Services.Cryptography
             return StringBytes(hashBytes);
         }
 
+        public static bool VerifyPassword(string password, string passwordHash)
+        {
+            var passwordEncriptografy = EncryptPassword(password);
+
+            return (passwordEncriptografy == passwordHash);
+        }
+
         private static string StringBytes(byte[] bytes)
         {
             var stringBuilder = new StringBuilder();
