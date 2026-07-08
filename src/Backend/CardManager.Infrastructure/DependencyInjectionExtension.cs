@@ -38,6 +38,7 @@ namespace CardManager.Infrastructure
         private static void AddRepositories(IServiceCollection services)
         {
             services.AddScoped<IUserWriteRepository, UserRepository>();
+
             services.AddScoped<IUserReadRepository, UserRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
