@@ -1,4 +1,5 @@
 ﻿using CardManager.Application.Services.AutoMapper;
+using CardManager.Application.UseCase.Login;
 using CardManager.Application.UseCase.User.Register;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,6 +16,8 @@ namespace CardManager.Application
         private static void AddUseCases(this IServiceCollection services)
         {
            services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
+
+           services.AddScoped<ILoginUseCase, LoginUseCase>();
         }
 
         private static void AddAutoMapper(this IServiceCollection services)
