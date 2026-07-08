@@ -1,4 +1,6 @@
-﻿using CardManager.Infrastructure.DataAccess;
+﻿using CardManager.Domain.Entities;
+using CardManager.Infrastructure.DataAccess;
+using CoreTestUtilities.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +27,19 @@ namespace Api.Test
                         options.UseInternalServiceProvider(provider);
                     });
                 });
+        }
+
+        public async Task<(CardManager.Domain.Entities.User user, string password)> SeedUserAsync()
+        {
+            (var user, var password) = UserBuilder.Build();
+
+            using var scope = Services.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<CardManagerDbContext>();
+
+            await dbContext.Users.AddAsync(user);
+            await dbContext.SaveChangesAsync();
+
+            return (user, password);
         }
     }
 }

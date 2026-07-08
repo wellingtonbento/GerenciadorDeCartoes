@@ -8,7 +8,7 @@ using FluentAssertions;
 
 namespace UseCases.Test.User.Register
 {
-    public class RegisterUserUseCaseTest
+    public class RegisterUserUseCaseTests
     {
         [Fact]
         public async Task Success()
