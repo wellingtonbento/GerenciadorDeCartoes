@@ -20,7 +20,7 @@ namespace Api.Test.User.Register
         {
             var request = RequestUserRegisterJsonBuilder.Build();
 
-            var response = await _httpClient.PostAsJsonAsync("user", request);
+            var response = await _httpClient.PostAsJsonAsync("/users", request);
 
             response.StatusCode.Should().Be(HttpStatusCode.Created);
 
@@ -29,6 +29,7 @@ namespace Api.Test.User.Register
             var responseData = await JsonDocument.ParseAsync(responseBody);
 
             responseData.RootElement.GetProperty("name").GetString().Should().NotBeNullOrWhiteSpace().And.Be(request.Name);
+            responseData.RootElement.GetProperty("tokens").GetProperty("accessToken").GetString().Should().NotBeNullOrEmpty();
         }
 
         [Theory]
@@ -43,7 +44,7 @@ namespace Api.Test.User.Register
 
             _httpClient.DefaultRequestHeaders.Add("Accept-Language", culture);
 
-            var response = await _httpClient.PostAsJsonAsync("user", request);
+            var response = await _httpClient.PostAsJsonAsync("/users", request);
 
             response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
 

@@ -38,8 +38,8 @@ namespace Api.Test.Login
             await using var responseBody = await response.Content.ReadAsStreamAsync();
             var responseData = await JsonDocument.ParseAsync(responseBody);
 
-            responseData.RootElement.GetProperty("name").GetString()
-                .Should().NotBeNullOrWhiteSpace().And.Be(user.Name);
+            responseData.RootElement.GetProperty("name").GetString().Should().NotBeNullOrWhiteSpace().And.Be(user.Name);
+            responseData.RootElement.GetProperty("tokens").GetProperty("accessToken").GetString().Should().NotBeNullOrEmpty();
         }
 
         [Theory]

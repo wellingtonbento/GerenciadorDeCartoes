@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ACCESS_DENIED" xml:space="preserve">
+    <value>Você não tem acesso a este recurso.</value>
+  </data>
+  <data name="ACCESS_TOKEN_REQUIRED" xml:space="preserve">
+    <value>Esta requisição precisa de um access roken.</value>
+  </data>
   <data name="EMAIL_ALREADY_REGISTERED" xml:space="preserve">
     <value>E-mail já registrado.</value>
   </data>

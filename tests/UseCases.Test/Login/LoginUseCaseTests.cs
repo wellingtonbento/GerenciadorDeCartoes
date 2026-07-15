@@ -25,6 +25,7 @@ namespace UseCases.Test.Login
 
             result.Should().NotBeNull();
             result.Name.Should().NotBeNullOrWhiteSpace().And.Be(user.Name);
+            result.Tokens.AccessToken.Should().NotBeNullOrEmpty();
         }
 
         [Fact]
@@ -68,10 +69,11 @@ namespace UseCases.Test.Login
         private LoginUseCase CreateLoginUseCase(CardManager.Domain.Entities.User? user = null)
         {
             var readRepositoryBuilder = new UserReadRepositoryBuilder();
+            var tokenGeneratorBuilder = TokenGeneratorBuilder.Build();
             if (user is not null)
                 readRepositoryBuilder.GetEmail(user);
 
-            return new LoginUseCase(readRepositoryBuilder.Build());
+            return new LoginUseCase(readRepositoryBuilder.Build(), tokenGeneratorBuilder);
         }
     }
 }
