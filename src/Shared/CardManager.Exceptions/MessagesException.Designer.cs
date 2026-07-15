@@ -61,6 +61,24 @@ namespace CardManager.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Você não tem acesso a este recurso..
+        /// </summary>
+        public static string ACCESS_DENIED {
+            get {
+                return ResourceManager.GetString("ACCESS_DENIED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Esta requisição precisa de um access roken..
+        /// </summary>
+        public static string ACCESS_TOKEN_REQUIRED {
+            get {
+                return ResourceManager.GetString("ACCESS_TOKEN_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a E-mail já registrado..
         /// </summary>
         public static string EMAIL_ALREADY_REGISTERED {

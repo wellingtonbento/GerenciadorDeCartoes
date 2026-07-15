@@ -3,6 +3,7 @@
     public interface IUserReadRepository
     {
         public Task<bool> ExistActiveUserWithEmail(string email);
+        public Task<bool> ExistActiveUserWithId(long id);
         public Task<Entities.User?> GetEmail(string email);
     }
 }

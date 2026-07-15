@@ -1,8 +1,12 @@
-﻿using CardManager.Domain.Repositories;
+﻿using CardManager.Domain.Identity;
+using CardManager.Domain.Repositories;
 using CardManager.Domain.Repositories.User;
+using CardManager.Domain.Security.Tokens;
 using CardManager.Infrastructure.DataAccess;
 using CardManager.Infrastructure.DataAccess.Repositories;
 using CardManager.Infrastructure.Extensions;
+using CardManager.Infrastructure.Identity;
+using CardManager.Infrastructure.Security.Tokens;
 using FluentMigrator.Runner;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,6 +20,9 @@ namespace CardManager.Infrastructure
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             AddRepositories(services);
+            AddJwtToken(services, configuration);
+
+            services.AddScoped<ILoggedUser, LoggedUser>();
 
             if (configuration.IsUniTestEnviromente())
                 return;
@@ -42,6 +49,17 @@ namespace CardManager.Infrastructure
             services.AddScoped<IUserReadRepository, UserRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+        }
+
+        private static void AddJwtToken(IServiceCollection services, IConfiguration configuration)
+        {
+            var expirationTokenInMunites = configuration.GetValue<uint>("Jwt:ExpirationTokenInMunites");
+            var signinKey = configuration.GetValue<string>("Jwt:SigninKey")!;
+
+            services.AddScoped<ITokenGenerator>(provider =>
+            {
+                return new JwtToken(expirationTokenInMunites, signinKey);
+            });
         }
 
         private static void AddFluentMigrator(IServiceCollection services, IConfiguration configuration)

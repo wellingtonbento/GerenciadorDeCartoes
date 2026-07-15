@@ -4,6 +4,7 @@ using CardManager.Communication.Requests;
 using CardManager.Communication.Responses;
 using CardManager.Domain.Repositories;
 using CardManager.Domain.Repositories.User;
+using CardManager.Domain.Security.Tokens;
 using CardManager.Exceptions;
 using CardManager.Exceptions.Exceptions;
 using FluentValidation.Results;
@@ -16,14 +17,16 @@ namespace CardManager.Application.UseCase.User.Register
         private readonly IUserReadRepository _readRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly ITokenGenerator _tokenGenerator;
 
 
-        public RegisterUserUseCase(IUserWriteRepository writeRepository, IUserReadRepository readRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        public RegisterUserUseCase(IUserWriteRepository writeRepository, IUserReadRepository readRepository, IUnitOfWork unitOfWork, IMapper mapper, ITokenGenerator tokenGenerator)
         {
             _writeRepository = writeRepository;
             _readRepository = readRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _tokenGenerator = tokenGenerator;
         }
 
         public async Task<ResponseUserRegisterJson> ValidateRequest(RequestUserRegisterJson request)
@@ -39,7 +42,11 @@ namespace CardManager.Application.UseCase.User.Register
 
             return new ResponseUserRegisterJson
             {
-                Name = user.Name
+                Name = user.Name,
+                Tokens = new ResponseTokenJson
+                {
+                    AccessToken = _tokenGenerator.Generate(user)
+                }
             };
         }
 

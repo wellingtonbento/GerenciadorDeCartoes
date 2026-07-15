@@ -21,6 +21,7 @@ namespace UseCases.Test.User.Register
 
             result.Should().NotBeNull();
             result.Name.Should().Be(request.Name);
+            result.Tokens.AccessToken.Should().NotBeNullOrEmpty();
         }
 
         [Fact]
@@ -56,11 +57,12 @@ namespace UseCases.Test.User.Register
             var writeRepository = UserWriteRepositoryBuilder.Build();
             var readRepositoryBuilder = new UserReadRepositoryBuilder();
             var unitOfWork = UnitOfWorkBuilder.Build();
+            var tokenGeneratorBuilder = TokenGeneratorBuilder.Build();
 
             if (string.IsNullOrWhiteSpace(email) == false)
                 readRepositoryBuilder.ExistActiveUserWithEmail(email);
 
-            return new RegisterUserUseCase(writeRepository, readRepositoryBuilder.Build(), unitOfWork, mapper);
+            return new RegisterUserUseCase(writeRepository, readRepositoryBuilder.Build(), unitOfWork, mapper, tokenGeneratorBuilder);
         }
     }
 }
