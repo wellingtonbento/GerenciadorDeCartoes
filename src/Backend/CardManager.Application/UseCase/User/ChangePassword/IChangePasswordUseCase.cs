@@ -1,6 +1,6 @@
 ﻿using CardManager.Communication.Requests;
 
-namespace CardManager.Application.UseCase.ChangePassword
+namespace CardManager.Application.UseCase.User.ChangePassword
 {
     public interface IChangePasswordUseCase
     {

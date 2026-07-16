@@ -1,4 +1,4 @@
-﻿using CardManager.Application.Shared.Validators;
+﻿using CardManager.Application.UseCase.Shared.Validators;
 using CardManager.Communication.Requests;
 using CardManager.Exceptions;
 using FluentValidation;

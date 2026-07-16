@@ -5,7 +5,7 @@ using CardManager.Exceptions;
 using CardManager.Exceptions.Exceptions;
 using FluentValidation.Results;
 
-namespace CardManager.Application.UseCase.ChangePassword
+namespace CardManager.Application.UseCase.User.ChangePassword
 {
     public class ChangePasswordUseCase : IChangePasswordUseCase
     {

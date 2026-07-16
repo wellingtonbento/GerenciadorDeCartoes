@@ -1,8 +1,9 @@
 ﻿using CardManager.Application.Services.AutoMapper;
-using CardManager.Application.UseCase.ChangePassword;
 using CardManager.Application.UseCase.Login;
+using CardManager.Application.UseCase.User.ChangePassword;
 using CardManager.Application.UseCase.User.Profile;
 using CardManager.Application.UseCase.User.Register;
+using CardManager.Application.UseCase.User.Update;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CardManager.Application
@@ -24,6 +25,8 @@ namespace CardManager.Application
             services.AddScoped<IGetUserProfileUseCase, GetUserProfileUseCase>();
 
             services.AddScoped<IChangePasswordUseCase, ChangePasswordUseCase>();
+
+            services.AddScoped<IUpdateUserUseCase, UpdateUserUseCase>();
         }
 
         private static void AddAutoMapper(this IServiceCollection services)

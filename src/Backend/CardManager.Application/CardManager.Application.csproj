@@ -17,4 +17,8 @@
     <ProjectReference Include="..\CardManager.Domain\CardManager.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UseCase\User\Update\" />
+  </ItemGroup>
+
 </Project>

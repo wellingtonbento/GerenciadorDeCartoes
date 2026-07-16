@@ -1,7 +1,7 @@
 ﻿using CardManager.Exceptions;
 using FluentValidation;
 
-namespace CardManager.Application.Shared.Validators
+namespace CardManager.Application.UseCase.Shared.Validators
 {
     public static class PasswordValidator
     {

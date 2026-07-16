@@ -1,8 +1,8 @@
-﻿using CardManager.Application.Shared.Validators;
+﻿using CardManager.Application.UseCase.Shared.Validators;
 using CardManager.Communication.Requests;
 using FluentValidation;
 
-namespace CardManager.Application.UseCase.ChangePassword
+namespace CardManager.Application.UseCase.User.ChangePassword
 {
     public class ChangePasswordValidator : AbstractValidator<RequestChangePasswordJson>
     {
