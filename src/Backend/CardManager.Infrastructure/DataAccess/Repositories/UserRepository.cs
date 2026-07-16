@@ -23,10 +23,12 @@ namespace CardManager.Infrastructure.DataAccess.Repositories
 
         public async Task UpdatePassword(long userId, string passwordHash)
         {
-            await _dbContext
-                .Users
-                .Where(user => user.Id == userId)
-                .ExecuteUpdateAsync(setter => setter.SetProperty(user => user.Password, passwordHash));
+            var user = await _dbContext.Users.FirstOrDefaultAsync(user => user.Id == userId);
+            if (user is not null)
+            {
+                user.Password = passwordHash;
+                await _dbContext.SaveChangesAsync();
+            }
         }
 
         public void UpdateProfile(User user)
