@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CardManager.Infrastructure.DataAccess.Repositories
 {
-    public class UserRepository : IUserReadRepository, IUserWriteRepository
+    public class UserRepository : IUserReadRepository, IUserWriteRepository, IUserUpdateRepository
     {
         private readonly CardManagerDbContext _dbContext;
 
@@ -19,6 +19,22 @@ namespace CardManager.Infrastructure.DataAccess.Repositories
         {
             return await _dbContext.Users.AsNoTracking()
                 .FirstOrDefaultAsync(user => user.Active && user.Email.Equals(email));
+        }
+
+        public async Task UpdatePassword(long userId, string passwordHash)
+        {
+            await _dbContext
+                .Users
+                .Where(user => user.Id == userId)
+                .ExecuteUpdateAsync(setter => setter.SetProperty(user => user.Password, passwordHash));
+        }
+
+        public void UpdateProfile(User user)
+        {
+            _dbContext.Users.Attach(user);
+
+            _dbContext.Entry(user).Property(user => user.Name).IsModified = true;
+            _dbContext.Entry(user).Property(user => user.Email).IsModified = true;
         }
     }
 }

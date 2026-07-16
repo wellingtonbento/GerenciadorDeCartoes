@@ -1,5 +1,6 @@
 ﻿using CardManager.Communication.Requests;
 using CardManager.Domain.Identity;
+using CardManager.Domain.Repositories;
 using CardManager.Domain.Repositories.User;
 using CardManager.Exceptions;
 using CardManager.Exceptions.Exceptions;
@@ -10,11 +11,15 @@ namespace CardManager.Application.UseCase.User.Update
     {
         private readonly ILoggedUser _loggedUser;
         private readonly IUserReadRepository _userReadRepository;
+        private readonly IUserUpdateRepository _userUpdateRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UpdateUserUseCase(ILoggedUser loggedUser, IUserReadRepository userReadRepository)
+        public UpdateUserUseCase(ILoggedUser loggedUser, IUserReadRepository userReadRepository, IUserUpdateRepository userUpdateRepository, IUnitOfWork unitOfWork)
         {
             _loggedUser = loggedUser;
             _userReadRepository = userReadRepository;
+            _userUpdateRepository = userUpdateRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task UpdateUser(RequestUpdateUserJson request)
@@ -22,6 +27,13 @@ namespace CardManager.Application.UseCase.User.Update
             var loggedUser = await _loggedUser.Get();
 
             await Validate(request, loggedUser);
+
+            loggedUser.Name = request.Name;
+            loggedUser.Email = request.Email;
+
+            _userUpdateRepository.UpdateProfile(loggedUser);
+
+            await _unitOfWork.SaveDb();
         }
 
         private async Task Validate(RequestUpdateUserJson request, Domain.Entities.User loggedUser)
