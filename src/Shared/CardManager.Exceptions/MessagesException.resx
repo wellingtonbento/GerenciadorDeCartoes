@@ -141,7 +141,13 @@
   <data name="PASSWORD_EMPTY" xml:space="preserve">
     <value>A senha deve ter mais de 6 caracteres.</value>
   </data>
+  <data name="PASSWORD_REQUIRED" xml:space="preserve">
+    <value>A senha é obrigatoria.</value>
+  </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
     <value>Erro desconhecido.</value>
+  </data>
+  <data name="VALIDATION_CURRENT_PASSWORD" xml:space="preserve">
+    <value>A senha atual informada está incorreta.</value>
   </data>
 </root>

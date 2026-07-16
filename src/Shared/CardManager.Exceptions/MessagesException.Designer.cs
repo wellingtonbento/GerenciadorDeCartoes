@@ -133,11 +133,29 @@ namespace CardManager.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A senha é obrigatoria..
+        /// </summary>
+        public static string PASSWORD_REQUIRED {
+            get {
+                return ResourceManager.GetString("PASSWORD_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Erro desconhecido..
         /// </summary>
         public static string UNKNOWN_ERROR {
             get {
                 return ResourceManager.GetString("UNKNOWN_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A senha atual informada está incorreta..
+        /// </summary>
+        public static string VALIDATION_CURRENT_PASSWORD {
+            get {
+                return ResourceManager.GetString("VALIDATION_CURRENT_PASSWORD", resourceCulture);
             }
         }
     }

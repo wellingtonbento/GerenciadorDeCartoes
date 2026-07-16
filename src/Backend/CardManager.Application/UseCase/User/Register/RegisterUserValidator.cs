@@ -1,4 +1,5 @@
-﻿using CardManager.Communication.Requests;
+﻿using CardManager.Application.Shared.Validators;
+using CardManager.Communication.Requests;
 using CardManager.Exceptions;
 using FluentValidation;
 
@@ -11,7 +12,7 @@ namespace CardManager.Application.UseCase.User.Register
             RuleFor(user => user.Name).NotEmpty().WithMessage(MessagesException.NAME_EMPTY);
             RuleFor(user => user.Email).NotEmpty().WithMessage(MessagesException.EMAIL_EMPTY);
             RuleFor(user => user.Email).EmailAddress().WithMessage(MessagesException.EMAIL_INVALID);
-            RuleFor(user => user.Password.Length).GreaterThanOrEqualTo(6).WithMessage(MessagesException.PASSWORD_EMPTY);
+            RuleFor(user => user.Password).Password();
         }
     }
 }
