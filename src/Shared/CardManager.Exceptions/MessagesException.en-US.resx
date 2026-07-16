@@ -135,13 +135,25 @@
   <data name="EMAIL_OR_PASSWORD_INVALID" xml:space="preserve">
     <value>Email or password is incorrect.</value>
   </data>
+  <data name="EMAIL_REQUIRED" xml:space="preserve">
+    <value>Email is required.</value>
+  </data>
   <data name="NAME_EMPTY" xml:space="preserve">
     <value>The name cannot be empty.</value>
+  </data>
+  <data name="NAME_REQUIRED" xml:space="preserve">
+    <value>The name is mandatory.</value>
   </data>
   <data name="PASSWORD_EMPTY" xml:space="preserve">
     <value>The password must be longer than 6 characters.</value>
   </data>
+  <data name="PASSWORD_REQUIRED" xml:space="preserve">
+    <value>The password is mandatory.</value>
+  </data>
   <data name="UNKNOWN_ERROR" xml:space="preserve">
     <value>unknown error</value>
+  </data>
+  <data name="VALIDATION_CURRENT_PASSWORD" xml:space="preserve">
+    <value>The current password provided is incorrect.</value>
   </data>
 </root>

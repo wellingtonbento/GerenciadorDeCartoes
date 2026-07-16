@@ -72,7 +72,7 @@ namespace Validators.Test.User.Register
             var result = validator.Validate(request);
 
             result.IsValid.Should().BeFalse();
-            result.Errors.Should().Contain(e => e.ErrorMessage == MessagesException.PASSWORD_EMPTY);
+            result.Errors.Should().Contain(e => e.ErrorMessage == MessagesException.PASSWORD_REQUIRED);
         }
     }
 }
