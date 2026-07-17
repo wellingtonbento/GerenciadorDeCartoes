@@ -19,6 +19,11 @@ namespace CoreTestUtilities.Repositories
             _repository.Setup(repository => repository.GetEmail(user.Email)).ReturnsAsync(user);
         }
 
+        public void GetUserWithId(User user)
+        {
+            _repository.Setup(repository => repository.GetUserWithId(user.Id)).ReturnsAsync(user);
+        }
+
         public IUserReadRepository Build() => _repository.Object;
     }
 }
