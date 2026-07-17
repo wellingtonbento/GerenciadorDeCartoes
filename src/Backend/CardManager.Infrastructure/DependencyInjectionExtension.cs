@@ -50,6 +50,8 @@ namespace CardManager.Infrastructure
 
             services.AddScoped<IUserUpdateRepository, UserRepository>();
 
+            services.AddScoped<IUserDeleteRepository, UserRepository>();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 

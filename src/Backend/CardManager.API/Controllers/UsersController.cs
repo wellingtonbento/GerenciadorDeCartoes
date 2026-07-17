@@ -1,6 +1,7 @@
 ﻿using CardManager.Application.UseCase.User.ChangePassword;
 using CardManager.Application.UseCase.User.Profile;
 using CardManager.Application.UseCase.User.Register;
+using CardManager.Application.UseCase.User.Remove;
 using CardManager.Application.UseCase.User.Update;
 using CardManager.Communication.Requests;
 using CardManager.Communication.Responses;
@@ -53,6 +54,16 @@ namespace CardManager.API.Controllers
             [FromBody] RequestChangePasswordJson request)
         {
             await useCase.ChangePassword(request);
+
+            return NoContent();
+        }
+
+        [HttpDelete]
+        [Authorize]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> Remove([FromServices] IRemoveUserUseCase useCase)
+        {
+            await useCase.RemoveUser();
 
             return NoContent();
         }
