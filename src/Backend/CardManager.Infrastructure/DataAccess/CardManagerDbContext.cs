@@ -8,6 +8,7 @@ namespace CardManager.Infrastructure.DataAccess
         public CardManagerDbContext(DbContextOptions<CardManagerDbContext> DbOptions) : base(DbOptions) { }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Card> Cards { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
