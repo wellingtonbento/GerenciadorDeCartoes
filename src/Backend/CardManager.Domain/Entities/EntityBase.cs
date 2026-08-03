@@ -1,6 +1,6 @@
 ﻿namespace CardManager.Domain.Entities
 {
-    public class EntityBase
+    public abstract class EntityBase
     {
         public long Id { get; set; }
         public bool Active { get; set; } = true;
