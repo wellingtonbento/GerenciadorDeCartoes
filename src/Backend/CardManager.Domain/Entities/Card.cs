@@ -1,17 +1,14 @@
-﻿using CardManager.Domain.Enums;
-
-namespace CardManager.Domain.Entities
+﻿namespace CardManager.Domain.Entities
 {
     public class Card : EntityBase
     {
         public long UserId { get; set; }
         public string Name { get; set; } = string.Empty;
-        public CardType Type { get; set; }
         public decimal CreditLimit { get; set; }
-        public decimal AmountSpent { get; set; }
-        public decimal DebitBalance { get; set; }
+        public decimal CreditBalance { get; set; }
+        public decimal Debit { get; set; }
 
-        public decimal AvailableCredit => CreditLimit - AmountSpent;
-        public decimal TotalAvailable => AvailableCredit + DebitBalance;
+        public decimal AvailableCredit => CreditLimit - CreditBalance;
+        public decimal TotalAvailable => AvailableCredit + Debit;
     }
 }

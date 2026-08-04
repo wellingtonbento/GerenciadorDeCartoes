@@ -16,6 +16,8 @@ namespace CardManager.Application.Services.AutoMapper
         {
             CreateMap<RequestUserRegisterJson, Domain.Entities.User>()
                 .ForMember(destination => destination.Password, option => option.Ignore());
+
+            CreateMap<RequestCardJson, Domain.Entities.Card>();
         }
 
         private void DomainToResponse()

@@ -156,16 +156,13 @@
   <data name="VALIDATION_CURRENT_PASSWORD" xml:space="preserve">
     <value>The current password provided is incorrect.</value>
   </data>
-  <data name="CARD_AMOUNT_SPENT_INVALID" xml:space="preserve">
-    <value>The amount spent cannot be negative.</value>
+  <data name="CARD_CREDIT_BALANCE_INVALID" xml:space="preserve">
+    <value>The credit balance cannot be negative.</value>
   </data>
   <data name="CARD_CREDIT_LIMIT_INVALID" xml:space="preserve">
     <value>The credit limit cannot be negative.</value>
   </data>
   <data name="CARD_DEBIT_BALANCE_INVALID" xml:space="preserve">
     <value>The debit balance cannot be negative.</value>
-  </data>
-  <data name="CARD_TYPE_INVALID" xml:space="preserve">
-    <value>The card type is invalid.</value>
   </data>
 </root>
