@@ -1,5 +1,6 @@
 ﻿using CardManager.Domain.Identity;
 using CardManager.Domain.Repositories;
+using CardManager.Domain.Repositories.Card;
 using CardManager.Domain.Repositories.User;
 using CardManager.Domain.Security.Tokens;
 using CardManager.Infrastructure.DataAccess;
@@ -45,12 +46,11 @@ namespace CardManager.Infrastructure
         private static void AddRepositories(IServiceCollection services)
         {
             services.AddScoped<IUserWriteRepository, UserRepository>();
-
             services.AddScoped<IUserReadRepository, UserRepository>();
-
             services.AddScoped<IUserUpdateRepository, UserRepository>();
-
             services.AddScoped<IUserDeleteRepository, UserRepository>();
+
+            services.AddScoped<ICardWriteRepository, CardRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }

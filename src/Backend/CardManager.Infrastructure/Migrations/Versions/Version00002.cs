@@ -11,10 +11,9 @@ namespace CardManager.Infrastructure.Migrations.Versions
             CreateTable("Cards")
                 .WithColumn("UserId").AsInt64().NotNullable().ForeignKey("Users", "Id").OnDelete(Rule.Cascade)
                 .WithColumn("Name").AsString(255).NotNullable()
-                .WithColumn("Type").AsInt32().NotNullable()
                 .WithColumn("CreditLimit").AsDecimal(18, 2).NotNullable()
-                .WithColumn("AmountSpent").AsDecimal(18, 2).NotNullable()
-                .WithColumn("DebitBalance").AsDecimal(18, 2).NotNullable();
+                .WithColumn("CreditBalance").AsDecimal(18, 2).NotNullable()
+                .WithColumn("Debit").AsDecimal(18, 2).NotNullable();
         }
     }
 }

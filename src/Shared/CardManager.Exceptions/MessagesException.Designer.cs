@@ -178,11 +178,11 @@ namespace CardManager.Exceptions {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a O valor gasto não pode ser negativo..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O saldo de crédito não pode ser negativo..
         /// </summary>
-        public static string CARD_AMOUNT_SPENT_INVALID {
+        public static string CARD_CREDIT_BALANCE_INVALID {
             get {
-                return ResourceManager.GetString("CARD_AMOUNT_SPENT_INVALID", resourceCulture);
+                return ResourceManager.GetString("CARD_CREDIT_BALANCE_INVALID", resourceCulture);
             }
         }
         
@@ -201,15 +201,6 @@ namespace CardManager.Exceptions {
         public static string CARD_DEBIT_BALANCE_INVALID {
             get {
                 return ResourceManager.GetString("CARD_DEBIT_BALANCE_INVALID", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a O tipo do cartão é inválido..
-        /// </summary>
-        public static string CARD_TYPE_INVALID {
-            get {
-                return ResourceManager.GetString("CARD_TYPE_INVALID", resourceCulture);
             }
         }
     }

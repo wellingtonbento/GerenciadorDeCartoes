@@ -1,5 +1,4 @@
 using CardManager.Application.UseCase.Card;
-using CardManager.Communication.Enums;
 using CardManager.Exceptions;
 using CoreTestUtilities.Requests;
 using FluentAssertions;
@@ -33,19 +32,6 @@ namespace Validators.Test.Card
         }
 
         [Fact]
-        public void Error_Type_Invalid()
-        {
-            var validator = new CardValidator();
-            var request = RequestCardJsonBuilder.Build();
-            request.Type = (CardType)999;
-
-            var result = validator.Validate(request);
-
-            result.IsValid.Should().BeFalse();
-            result.Errors.Should().Contain(e => e.ErrorMessage == MessagesException.CARD_TYPE_INVALID);
-        }
-
-        [Fact]
         public void Error_CreditLimit_Negative()
         {
             var validator = new CardValidator();
@@ -59,24 +45,24 @@ namespace Validators.Test.Card
         }
 
         [Fact]
-        public void Error_AmountSpent_Negative()
+        public void Error_CreditBalance_Negative()
         {
             var validator = new CardValidator();
             var request = RequestCardJsonBuilder.Build();
-            request.AmountSpent = -1;
+            request.CreditBalance = -1;
 
             var result = validator.Validate(request);
 
             result.IsValid.Should().BeFalse();
-            result.Errors.Should().Contain(e => e.ErrorMessage == MessagesException.CARD_AMOUNT_SPENT_INVALID);
+            result.Errors.Should().Contain(e => e.ErrorMessage == MessagesException.CARD_CREDIT_BALANCE_INVALID);
         }
 
         [Fact]
-        public void Error_DebitBalance_Negative()
+        public void Error_Debit_Negative()
         {
             var validator = new CardValidator();
             var request = RequestCardJsonBuilder.Build();
-            request.DebitBalance = -1;
+            request.Debit = -1;
 
             var result = validator.Validate(request);
 
