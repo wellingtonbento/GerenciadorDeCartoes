@@ -23,6 +23,10 @@ namespace CardManager.Application.Services.AutoMapper
         private void DomainToResponse()
         {
             CreateMap<Domain.Entities.User, ResponseUserProfileJson>();
+
+            CreateMap<Domain.Entities.Card, ResponseObtainCardsJson>()
+                 .ForMember(destination => destination.AvailableCredit,
+               option => option.MapFrom(source => source.AvailableCredit));
         }
     }
 }

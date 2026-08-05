@@ -41,5 +41,19 @@ namespace Api.Test
 
             return (user, password);
         }
+
+        public async Task<CardManager.Domain.Entities.Card> SeedCardAsync(CardManager.Domain.Entities.User user)
+        {
+            var card = CardBuilder.Build();
+            card.UserId = user.Id;
+
+            using var scope = Services.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<CardManagerDbContext>();
+
+            await dbContext.Cards.AddAsync(card);
+            await dbContext.SaveChangesAsync();
+
+            return card;
+        }
     }
 }
