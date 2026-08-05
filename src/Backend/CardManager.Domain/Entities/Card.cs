@@ -9,6 +9,5 @@
         public decimal Debit { get; set; }
 
         public decimal AvailableCredit => CreditLimit - CreditBalance;
-        public decimal TotalAvailable => AvailableCredit + Debit;
     }
 }
