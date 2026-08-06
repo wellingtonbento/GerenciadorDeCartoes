@@ -165,4 +165,7 @@
   <data name="CARD_DEBIT_BALANCE_INVALID" xml:space="preserve">
     <value>O saldo de débito não pode ser negativo.</value>
   </data>
+  <data name="CARD_NOT_FOUND" xml:space="preserve">
+    <value>O cartão não foi encontrado.</value>
+  </data>
 </root>

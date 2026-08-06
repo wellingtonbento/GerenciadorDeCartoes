@@ -79,6 +79,42 @@ namespace CardManager.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O saldo de crédito não pode ser negativo..
+        /// </summary>
+        public static string CARD_CREDIT_BALANCE_INVALID {
+            get {
+                return ResourceManager.GetString("CARD_CREDIT_BALANCE_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O limite de crédito não pode ser negativo..
+        /// </summary>
+        public static string CARD_CREDIT_LIMIT_INVALID {
+            get {
+                return ResourceManager.GetString("CARD_CREDIT_LIMIT_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O saldo de débito não pode ser negativo..
+        /// </summary>
+        public static string CARD_DEBIT_BALANCE_INVALID {
+            get {
+                return ResourceManager.GetString("CARD_DEBIT_BALANCE_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O cartão não foi encontrado..
+        /// </summary>
+        public static string CARD_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("CARD_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a E-mail já registrado..
         /// </summary>
         public static string EMAIL_ALREADY_REGISTERED {
@@ -174,33 +210,6 @@ namespace CardManager.Exceptions {
         public static string VALIDATION_CURRENT_PASSWORD {
             get {
                 return ResourceManager.GetString("VALIDATION_CURRENT_PASSWORD", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a O saldo de crédito não pode ser negativo..
-        /// </summary>
-        public static string CARD_CREDIT_BALANCE_INVALID {
-            get {
-                return ResourceManager.GetString("CARD_CREDIT_BALANCE_INVALID", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a O limite de crédito não pode ser negativo..
-        /// </summary>
-        public static string CARD_CREDIT_LIMIT_INVALID {
-            get {
-                return ResourceManager.GetString("CARD_CREDIT_LIMIT_INVALID", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a O saldo de débito não pode ser negativo..
-        /// </summary>
-        public static string CARD_DEBIT_BALANCE_INVALID {
-            get {
-                return ResourceManager.GetString("CARD_DEBIT_BALANCE_INVALID", resourceCulture);
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using CardManager.Application.UseCase.Card.Obtain;
 using CardManager.Application.UseCase.Card.Register;
+using CardManager.Application.UseCase.Card.Remove;
 using CardManager.Communication.Requests;
 using CardManager.Communication.Responses;
 using Microsoft.AspNetCore.Authorization;
@@ -29,6 +30,16 @@ namespace CardManager.API.Controllers
             var result = await useCase.GetCards();
 
             return Ok(result);
+        }
+
+        [HttpDelete("{cardId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Delete([FromRoute] long cardId, [FromServices] IDeleteCardByIdUseCase useCase)
+        {
+            await useCase.DeleteCard(cardId);
+
+            return NoContent();
         }
     }
 }
