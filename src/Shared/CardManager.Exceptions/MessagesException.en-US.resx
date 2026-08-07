@@ -168,4 +168,7 @@
   <data name="CARD_NOT_FOUND" xml:space="preserve">
     <value>The card was not found.</value>
   </data>
+  <data name="CREDIT_LIMIT_LOWER_THAN_THE_CREDIT_SPENT" xml:space="preserve">
+    <value>The new credit limit amount cannot be lower than the amount already spent.</value>
+  </data>
 </root>

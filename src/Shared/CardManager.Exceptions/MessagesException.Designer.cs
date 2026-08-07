@@ -115,6 +115,15 @@ namespace CardManager.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O novo valor de limite de crédito não pode ser menor que o limite gasto..
+        /// </summary>
+        public static string CREDIT_LIMIT_LOWER_THAN_THE_CREDIT_SPENT {
+            get {
+                return ResourceManager.GetString("CREDIT_LIMIT_LOWER_THAN_THE_CREDIT_SPENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a E-mail já registrado..
         /// </summary>
         public static string EMAIL_ALREADY_REGISTERED {

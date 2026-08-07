@@ -1,6 +1,7 @@
 ﻿using CardManager.Application.UseCase.Card.Obtain;
 using CardManager.Application.UseCase.Card.Register;
 using CardManager.Application.UseCase.Card.Remove;
+using CardManager.Application.UseCase.Card.Update;
 using CardManager.Communication.Requests;
 using CardManager.Communication.Responses;
 using Microsoft.AspNetCore.Authorization;
@@ -41,5 +42,17 @@ namespace CardManager.API.Controllers
 
             return NoContent();
         }
+
+        [HttpPut("{cardId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Update([FromRoute] long cardId, [FromBody] RequestUpdateCardJson request, [FromServices] IUpdateCardUseCase useCase)
+        {
+            await useCase.UpdateCard(cardId, request);
+
+            return NoContent();
+        }
+
     }
 }

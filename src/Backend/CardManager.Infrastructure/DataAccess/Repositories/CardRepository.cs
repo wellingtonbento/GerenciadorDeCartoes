@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CardManager.Infrastructure.DataAccess.Repositories
 {
-    public class CardRepository : ICardWriteRepository, ICardReadRepository
+    public class CardRepository : ICardWriteRepository, ICardReadRepository, ICardUpdateRepository
     {
         private readonly CardManagerDbContext _context;
         public CardRepository(CardManagerDbContext context) => _context = context;
@@ -30,6 +30,15 @@ namespace CardManager.Infrastructure.DataAccess.Repositories
         public async Task<IList<Card>> GetCards(long userId)
         {
             return await _context.Cards.AsNoTracking().Where(cards => cards.Active && cards.UserId == userId).ToListAsync();
+        }
+
+        public void Update(Card card)
+        {
+            _context.Cards.Attach(card);
+
+            _context.Entry(card).Property(card => card.Name).IsModified = true;
+            _context.Entry(card).Property(card => card.CreditLimit).IsModified = true;
+            _context.Entry(card).Property(card => card.Debit).IsModified = true;
         }
     }
 }
