@@ -15,6 +15,11 @@ namespace CoreTestUtilities.Repositories
             _repository.Setup(repository => repository.GetCards(It.IsAny<long>())).ReturnsAsync(cards);
         }
 
+        public void GetCard(Card card)
+        {
+            _repository.Setup(repository => repository.GetCard(It.IsAny<long>(), It.IsAny<long>())).ReturnsAsync(card);
+        }
+
         public ICardReadRepository Build() => _repository.Object;
     }
 }

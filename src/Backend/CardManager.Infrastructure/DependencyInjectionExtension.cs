@@ -52,7 +52,7 @@ namespace CardManager.Infrastructure
 
             services.AddScoped<ICardWriteRepository, CardRepository>();
             services.AddScoped<ICardReadRepository, CardRepository>();
-            services.AddScoped<ICardWriteRepository, CardRepository>();
+            services.AddScoped<ICardUpdateRepository, CardRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
