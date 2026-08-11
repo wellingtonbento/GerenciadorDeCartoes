@@ -106,6 +106,15 @@ namespace CardManager.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O id do cartão é inválido..
+        /// </summary>
+        public static string CARD_ID_INVALID {
+            get {
+                return ResourceManager.GetString("CARD_ID_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O cartão não foi encontrado..
         /// </summary>
         public static string CARD_NOT_FOUND {
@@ -120,6 +129,15 @@ namespace CardManager.Exceptions {
         public static string CREDIT_LIMIT_LOWER_THAN_THE_CREDIT_SPENT {
             get {
                 return ResourceManager.GetString("CREDIT_LIMIT_LOWER_THAN_THE_CREDIT_SPENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A descrição é obrigatoria..
+        /// </summary>
+        public static string DESCRIPTION_REQUIRED {
+            get {
+                return ResourceManager.GetString("DESCRIPTION_REQUIRED", resourceCulture);
             }
         }
         
@@ -201,6 +219,42 @@ namespace CardManager.Exceptions {
         public static string PASSWORD_REQUIRED {
             get {
                 return ResourceManager.GetString("PASSWORD_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A forma de pagamento é inválida..
+        /// </summary>
+        public static string PAYMENT_METHOD_INVALID {
+            get {
+                return ResourceManager.GetString("PAYMENT_METHOD_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Limite de crédito insuficiente para a transação..
+        /// </summary>
+        public static string TRANSACTION_CREDIT_INVALID {
+            get {
+                return ResourceManager.GetString("TRANSACTION_CREDIT_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Saldo de débito insuficiente para a transação..
+        /// </summary>
+        public static string TRANSACTION_DEBIT_INVALID {
+            get {
+                return ResourceManager.GetString("TRANSACTION_DEBIT_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a O valor da transação deve ser maior que zero..
+        /// </summary>
+        public static string TRANSACTION_VALUE_INVALID {
+            get {
+                return ResourceManager.GetString("TRANSACTION_VALUE_INVALID", resourceCulture);
             }
         }
         

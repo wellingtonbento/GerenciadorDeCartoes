@@ -39,6 +39,7 @@ namespace CardManager.Infrastructure.DataAccess.Repositories
             _context.Entry(card).Property(card => card.Name).IsModified = true;
             _context.Entry(card).Property(card => card.CreditLimit).IsModified = true;
             _context.Entry(card).Property(card => card.Debit).IsModified = true;
+            _context.Entry(card).Property(card => card.CreditBalance).IsModified = true;
         }
     }
 }

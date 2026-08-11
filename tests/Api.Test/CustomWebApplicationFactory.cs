@@ -58,6 +58,23 @@ namespace Api.Test
             return card;
         }
 
+        public async Task<CardManager.Domain.Entities.Card> SeedCardAsync(CardManager.Domain.Entities.User user, decimal creditLimit, decimal creditBalance, decimal debit)
+        {
+            var card = CardBuilder.Build();
+            card.UserId = user.Id;
+            card.CreditLimit = creditLimit;
+            card.CreditBalance = creditBalance;
+            card.Debit = debit;
+
+            using var scope = Services.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<CardManagerDbContext>();
+
+            await dbContext.Cards.AddAsync(card);
+            await dbContext.SaveChangesAsync();
+
+            return card;
+        }
+
         public async Task<CardManager.Domain.Entities.Card> SeedCardAsync(CardManager.Domain.Entities.User user)
         {
             var card = CardBuilder.Build();
