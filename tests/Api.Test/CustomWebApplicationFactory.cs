@@ -88,5 +88,22 @@ namespace Api.Test
 
             return card;
         }
+
+        public async Task<CardManager.Domain.Entities.Transaction> SeedTransactionAsync(CardManager.Domain.Entities.Card card, CardManager.Domain.Entities.PaymentMethod paymentMethod, decimal amount, string description)
+        {
+            var transaction = TransactionBuilder.Build();
+            transaction.CardId = card.Id;
+            transaction.PaymentMethod = paymentMethod;
+            transaction.Amount = amount;
+            transaction.Description = description;
+
+            using var scope = Services.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<CardManagerDbContext>();
+
+            await dbContext.Transactions.AddAsync(transaction);
+            await dbContext.SaveChangesAsync();
+
+            return transaction;
+        }
     }
 }

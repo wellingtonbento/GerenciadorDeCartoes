@@ -1,4 +1,5 @@
-﻿using CardManager.Application.UseCase.Transaction.Register;
+﻿using CardManager.Application.UseCase.Transaction.Obtain;
+using CardManager.Application.UseCase.Transaction.Register;
 using CardManager.Communication.Requests;
 using CardManager.Communication.Responses;
 using Microsoft.AspNetCore.Authorization;
@@ -19,6 +20,16 @@ namespace CardManager.API.Controllers
             var result = await useCase.RegisterTransaction(request);
 
             return Created(string.Empty, result);
+        }
+
+        [HttpGet("{cardId}")]
+        [ProducesResponseType(typeof(ResponseObtainTransactionsJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Get([FromRoute] long cardId, [FromServices] IObtainTransactionsUseCase useCase)
+        {
+            var result = await useCase.ObtainTransactions(cardId);
+
+            return Ok(result);
         }
     }
 }
