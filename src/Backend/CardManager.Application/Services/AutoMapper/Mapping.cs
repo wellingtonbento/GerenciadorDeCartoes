@@ -30,7 +30,9 @@ namespace CardManager.Application.Services.AutoMapper
                  .ForMember(destination => destination.AvailableCredit,
                option => option.MapFrom(source => source.AvailableCredit));
 
-            CreateMap<Domain.Entities.Transaction, ResponseRegisterTransaction>();
+            CreateMap<Domain.Entities.Transaction, ResponseObtainTransactionsJson>()
+                .ForMember(destination => destination.CreatedOn,
+                option => option.MapFrom(source => source.CreatedOn.Date));
         }
     }
 }

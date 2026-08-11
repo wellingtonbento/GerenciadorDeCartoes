@@ -56,6 +56,7 @@ namespace CardManager.Infrastructure
             services.AddScoped<ICardUpdateRepository, CardRepository>();
 
             services.AddScoped<ITransactionWriteRepository, TransactionRepository>();
+            services.AddScoped<ITransactionReadRepository, TransactionRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }

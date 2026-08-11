@@ -5,6 +5,7 @@ using CardManager.Application.UseCase.Card.Register;
 using CardManager.Application.UseCase.Card.Remove;
 using CardManager.Application.UseCase.Card.Update;
 using CardManager.Application.UseCase.Login;
+using CardManager.Application.UseCase.Transaction.Obtain;
 using CardManager.Application.UseCase.Transaction.Register;
 using CardManager.Application.UseCase.User.ChangePassword;
 using CardManager.Application.UseCase.User.Profile;
@@ -39,6 +40,7 @@ namespace CardManager.Application
             services.AddScoped<IUpdateCardUseCase, UpdateCardUseCase>();
 
             services.AddScoped<IRegisterTransactionUseCase, RegisterTransactionUseCase>();
+            services.AddScoped<IObtainTransactionsUseCase, ObtainTransactionsUseCase>();
             services.AddScoped<IPaymentServiceFactory, PaymentServiceFactory>();
         }
 
