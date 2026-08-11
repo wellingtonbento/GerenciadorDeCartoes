@@ -18,6 +18,8 @@ namespace CardManager.Application.Services.AutoMapper
                 .ForMember(destination => destination.Password, option => option.Ignore());
 
             CreateMap<RequestCardJson, Domain.Entities.Card>();
+
+            CreateMap<RequestRegisterTransaction, Domain.Entities.Transaction>();
         }
 
         private void DomainToResponse()
@@ -27,6 +29,8 @@ namespace CardManager.Application.Services.AutoMapper
             CreateMap<Domain.Entities.Card, ResponseObtainCardsJson>()
                  .ForMember(destination => destination.AvailableCredit,
                option => option.MapFrom(source => source.AvailableCredit));
+
+            CreateMap<Domain.Entities.Transaction, ResponseRegisterTransaction>();
         }
     }
 }

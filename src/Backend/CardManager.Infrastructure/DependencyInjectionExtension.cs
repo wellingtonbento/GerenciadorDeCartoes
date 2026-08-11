@@ -1,6 +1,7 @@
 ﻿using CardManager.Domain.Identity;
 using CardManager.Domain.Repositories;
 using CardManager.Domain.Repositories.Card;
+using CardManager.Domain.Repositories.Transaction;
 using CardManager.Domain.Repositories.User;
 using CardManager.Domain.Security.Tokens;
 using CardManager.Infrastructure.DataAccess;
@@ -53,6 +54,8 @@ namespace CardManager.Infrastructure
             services.AddScoped<ICardWriteRepository, CardRepository>();
             services.AddScoped<ICardReadRepository, CardRepository>();
             services.AddScoped<ICardUpdateRepository, CardRepository>();
+
+            services.AddScoped<ITransactionWriteRepository, TransactionRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
