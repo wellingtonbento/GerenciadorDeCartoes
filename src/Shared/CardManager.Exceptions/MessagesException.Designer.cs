@@ -124,6 +124,15 @@ namespace CardManager.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A nova quantia não pode ser negativa..
+        /// </summary>
+        public static string CHANGE_AMOUNT {
+            get {
+                return ResourceManager.GetString("CHANGE_AMOUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a O novo valor de limite de crédito não pode ser menor que o limite gasto..
         /// </summary>
         public static string CREDIT_LIMIT_LOWER_THAN_THE_CREDIT_SPENT {
@@ -246,6 +255,15 @@ namespace CardManager.Exceptions {
         public static string TRANSACTION_DEBIT_INVALID {
             get {
                 return ResourceManager.GetString("TRANSACTION_DEBIT_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a A transação não foi encontrada..
+        /// </summary>
+        public static string TRANSACTION_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("TRANSACTION_NOT_FOUND", resourceCulture);
             }
         }
         
