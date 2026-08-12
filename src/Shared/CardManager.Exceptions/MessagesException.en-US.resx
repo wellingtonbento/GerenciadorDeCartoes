@@ -189,4 +189,10 @@
   <data name="TRANSACTION_CREDIT_INVALID" xml:space="preserve">
     <value>Insufficient credit limit for the transaction.</value>
   </data>
+  <data name="TRANSACTION_NOT_FOUND" xml:space="preserve">
+    <value>The transaction was not found.</value>
+  </data>
+  <data name="CHANGE_AMOUNT" xml:space="preserve">
+    <value>The new amount cannot be negative.</value>
+  </data>
 </root>

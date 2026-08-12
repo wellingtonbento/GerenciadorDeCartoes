@@ -1,4 +1,5 @@
-﻿using CardManager.Application.UseCase.Transaction.Obtain;
+﻿using CardManager.Application.UseCase.Transaction.ChangeAmount;
+using CardManager.Application.UseCase.Transaction.Obtain;
 using CardManager.Application.UseCase.Transaction.Register;
 using CardManager.Communication.Requests;
 using CardManager.Communication.Responses;
@@ -30,6 +31,17 @@ namespace CardManager.API.Controllers
             var result = await useCase.ObtainTransactions(cardId);
 
             return Ok(result);
+        }
+
+        [HttpPatch("{cardId}/{transactionId}/amount")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> ChangeAmount([FromRoute] long cardId, [FromRoute] long transactionId,
+    [FromBody] RequestChangeAmountJson request, [FromServices] IChangeAmountUseCase useCase)
+        {
+            await useCase.ChangeAmount(transactionId, cardId, request);
+            return NoContent();
         }
     }
 }
