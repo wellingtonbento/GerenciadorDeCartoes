@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CardManager.Infrastructure.DataAccess.Repositories
 {
-    public class TransactionRepository : ITransactionWriteRepository, ITransactionReadRepository , ITransactionUpdateRepository
+    public class TransactionRepository : ITransactionWriteRepository, ITransactionReadRepository , ITransactionUpdateRepository, ITransactionDeleteRepository
     {
         private readonly CardManagerDbContext _context;
 
@@ -24,9 +24,16 @@ namespace CardManager.Infrastructure.DataAccess.Repositories
 
         public async Task UpdateAmount(long id, decimal amount)
         {
-            var transaction = await _context.Transactions.FirstOrDefaultAsync(t => t.Id == id);
+            var transaction = await _context.Transactions.FirstOrDefaultAsync(t => t.Active && t.Id == id);
             
             transaction!.Amount = amount;
+        }
+
+        public async Task Delete(long id)
+        {
+            var transaction = await ObtainTransaction(id);
+
+            _context.Transactions.Remove(transaction);
         }
     }
 }

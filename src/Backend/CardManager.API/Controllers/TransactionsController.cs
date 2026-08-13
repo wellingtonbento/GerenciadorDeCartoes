@@ -1,6 +1,7 @@
 ﻿using CardManager.Application.UseCase.Transaction.ChangeAmount;
 using CardManager.Application.UseCase.Transaction.Obtain;
 using CardManager.Application.UseCase.Transaction.Register;
+using CardManager.Application.UseCase.Transaction.Remove;
 using CardManager.Communication.Requests;
 using CardManager.Communication.Responses;
 using Microsoft.AspNetCore.Authorization;
@@ -38,9 +39,18 @@ namespace CardManager.API.Controllers
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> ChangeAmount([FromRoute] long cardId, [FromRoute] long transactionId,
-    [FromBody] RequestChangeAmountJson request, [FromServices] IChangeAmountUseCase useCase)
+            [FromBody] RequestChangeAmountJson request, [FromServices] IChangeAmountUseCase useCase)
         {
             await useCase.ChangeAmount(transactionId, cardId, request);
+            return NoContent();
+        }
+
+        [HttpDelete("{cardId}/{transactionId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Delete([FromRoute] long cardId, [FromRoute] long transactionId, [FromServices] IDeleteTransactionUseCase useCase)
+        {
+            await useCase.DeleteTransaction(cardId, transactionId);
             return NoContent();
         }
     }
