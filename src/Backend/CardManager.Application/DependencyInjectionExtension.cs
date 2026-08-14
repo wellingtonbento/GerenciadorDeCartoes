@@ -4,6 +4,7 @@ using CardManager.Application.UseCase.Card.Obtain;
 using CardManager.Application.UseCase.Card.Register;
 using CardManager.Application.UseCase.Card.Remove;
 using CardManager.Application.UseCase.Card.Update;
+using CardManager.Application.UseCase.Dashboard;
 using CardManager.Application.UseCase.Login;
 using CardManager.Application.UseCase.Transaction.ChangeAmount;
 using CardManager.Application.UseCase.Transaction.Obtain;
@@ -46,6 +47,8 @@ namespace CardManager.Application
             services.AddScoped<IChangeAmountUseCase, ChangeAmountUseCase>();
             services.AddScoped<IDeleteTransactionUseCase, DeleteTransactionUseCase>();
             services.AddScoped<IPaymentServiceFactory, PaymentServiceFactory>();
+
+            services.AddScoped<IObtainDashboardUseCase, ObtainDashboardUseCase>();
         }
 
         private static void AddAutoMapper(this IServiceCollection services)
