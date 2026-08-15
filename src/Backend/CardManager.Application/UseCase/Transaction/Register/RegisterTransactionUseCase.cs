@@ -60,11 +60,11 @@ namespace CardManager.Application.UseCase.Transaction.Register
             };
         }
 
-        private void validateRequest(RequestRegisterTransaction request)
+        private static void validateRequest(RequestRegisterTransaction request)
         {
             var result = new TransactionValidator().Validate(request);
 
-            if (result.IsValid == false)
+            if (!result.IsValid)
                 throw new ErrorOnValidationException(result.Errors.Select(erro => erro.ErrorMessage).ToList());
         }
     }

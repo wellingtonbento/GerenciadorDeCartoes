@@ -4,7 +4,7 @@ namespace CardManager.Exceptions.Exceptions
 {
     public class ErrorUpdateCardException : CardManagerException
     {
-        private readonly string Message;
+        private new readonly string Message;
 
         public ErrorUpdateCardException(string message) : base(string.Empty)
         {

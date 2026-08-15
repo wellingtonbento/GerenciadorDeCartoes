@@ -58,7 +58,7 @@ namespace CardManager.Application.UseCase.Transaction.ChangeAmount
         {
             var result = new ChangeAmountValidator().Validate(request);
 
-            if (result.IsValid == false)
+            if (!result.IsValid)
                 throw new ErrorOnValidationException(result.Errors.Select(erro => erro.ErrorMessage).ToList());
         }
     }

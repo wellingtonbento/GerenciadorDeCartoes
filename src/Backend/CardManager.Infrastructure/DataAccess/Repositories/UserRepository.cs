@@ -12,7 +12,7 @@ namespace CardManager.Infrastructure.DataAccess.Repositories
 
         public async Task Add(User user) => await _dbContext.Users.AddAsync(user);
 
-        public async Task<bool> ExistActiveUserWithEmail(string email) => await _dbContext.Users.AnyAsync(user => user.Email!.Equals(email) && user.Active);
+        public async Task<bool> ExistActiveUserWithEmail(string email) => await _dbContext.Users.AnyAsync(user => user.Email.Equals(email) && user.Active);
 
         public async Task<bool> ExistActiveUserWithId(long id) => await _dbContext.Users.AnyAsync(user => user.Active && user.Id == id);
 

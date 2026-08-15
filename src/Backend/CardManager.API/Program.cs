@@ -92,7 +92,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 var userRepository = context.HttpContext.RequestServices.GetRequiredService<IUserReadRepository>();
 
                 var userExist = await userRepository.ExistActiveUserWithId(long.Parse(userId));
-                if (userExist == false)
+                if (!userExist)
                     context.Fail("User not found or inactive");
             },
             OnChallenge = async context =>
