@@ -4,7 +4,7 @@ namespace CardManager.Exceptions.Exceptions
 {
     public abstract class CardManagerException : SystemException
     {
-        public CardManagerException(string message) : base(message) { }
+        protected CardManagerException(string message) : base(message) { }
 
         public abstract IList<string> GetErrorMessages();
         public abstract HttpStatusCode GetStatusCode();

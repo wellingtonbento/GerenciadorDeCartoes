@@ -24,7 +24,7 @@ namespace CardManager.Application.UseCase.Login
             if (user is null)
                 throw new IncorrectLoginException();
 
-            var isPasswordValid = PasswordEncripter.VerifyPassword(request.Password, user!.Password);
+            var isPasswordValid = PasswordEncripter.VerifyPassword(request.Password, user.Password);
             if (!isPasswordValid)
                 throw new IncorrectLoginException();
 

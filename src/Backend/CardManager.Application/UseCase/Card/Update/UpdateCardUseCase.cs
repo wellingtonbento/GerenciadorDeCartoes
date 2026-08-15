@@ -47,7 +47,7 @@ namespace CardManager.Application.UseCase.Card.Update
         {
             var result = new UpdateCardValidator().Validate(request);
 
-            if (result.IsValid == false)
+            if (!result.IsValid)
                 throw new ErrorOnValidationException(result.Errors.Select(erro => erro.ErrorMessage).ToList());
         }
     }

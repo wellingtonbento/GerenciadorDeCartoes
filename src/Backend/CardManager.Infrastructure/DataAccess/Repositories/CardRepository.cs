@@ -22,7 +22,7 @@ namespace CardManager.Infrastructure.DataAccess.Repositories
             return true;
         }
 
-        public async Task<Card> GetCard(long cardId, long userId)
+        public async Task<Card?> GetCard(long cardId, long userId)
         {
             return await _context.Cards.FirstOrDefaultAsync(card => card.Active && card.Id == cardId && card.UserId == userId);
         }

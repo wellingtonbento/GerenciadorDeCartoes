@@ -66,7 +66,7 @@ namespace UseCases.Test.Login
                 .Where(e => e.Message.Equals(MessagesException.EMAIL_OR_PASSWORD_INVALID));
         }
 
-        private LoginUseCase CreateLoginUseCase(CardManager.Domain.Entities.User? user = null)
+        private static LoginUseCase CreateLoginUseCase(CardManager.Domain.Entities.User? user = null)
         {
             var readRepositoryBuilder = new UserReadRepositoryBuilder();
             var tokenGeneratorBuilder = TokenGeneratorBuilder.Build();

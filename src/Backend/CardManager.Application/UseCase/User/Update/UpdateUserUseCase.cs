@@ -42,14 +42,14 @@ namespace CardManager.Application.UseCase.User.Update
 
             var result = validator.Validate(request);
 
-            if(loggedUser.Email.Equals(request.Email) == false)
+            if(!loggedUser.Email.Equals(request.Email))
             {
                 var userExist = await _userReadRepository.ExistActiveUserWithEmail(request.Email);
                 if(userExist)
                     result.Errors.Add(new FluentValidation.Results.ValidationFailure("email", MessagesException.EMAIL_REQUIRED));
             }
 
-            if(result.IsValid  == false)
+            if(!result.IsValid)
             {
                 var errorMessages = result.Errors.Select(error => error.ErrorMessage).ToList();
 

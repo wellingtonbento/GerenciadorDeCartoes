@@ -43,7 +43,7 @@ namespace CardManager.Application.UseCase.Card.Register
         {
             var result = new CardValidator().Validate(request);
 
-            if (result.IsValid == false)
+            if (!result.IsValid)
                 throw new ErrorOnValidationException(result.Errors.Select(erro => erro.ErrorMessage).ToList());
         }
     }

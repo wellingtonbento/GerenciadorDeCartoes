@@ -30,14 +30,14 @@ namespace CardManager.Application.UseCase.User.ChangePassword
             await _userUpdateRepository.UpdatePassword(loggedUser.Id, hashedPassword);
         }
 
-        private void Validate(RequestChangePasswordJson request, Domain.Entities.User loggedUser)
+        private static void Validate(RequestChangePasswordJson request, Domain.Entities.User loggedUser)
         {
             var result = new ChangePasswordValidator().Validate(request);
 
-            if (PasswordEncripter.VerifyPassword(request.CurrentPassword, loggedUser.Password) == false)
+            if (!PasswordEncripter.VerifyPassword(request.CurrentPassword, loggedUser.Password))
                 result.Errors.Add(new ValidationFailure(string.Empty, MessagesException.VALIDATION_CURRENT_PASSWORD));
 
-            if (result.IsValid == false)
+            if (!result.IsValid)
                 throw new ErrorOnValidationException(result.Errors.Select(erro => erro.ErrorMessage).ToList());
         }
     }
